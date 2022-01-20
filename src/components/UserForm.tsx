@@ -1,6 +1,9 @@
 import { useForm } from 'react-hook-form';
 import { DevTool } from '@hookform/devtools';
 
+import Form from '@components/ui/Form';
+import Input from '@components/ui/Input';
+import Select from '@components/ui/Select';
 import { User } from '@models/User';
 
 const UserForm = () => {
@@ -16,26 +19,13 @@ const UserForm = () => {
     <>
       <DevTool control={control} placement='top-right' />
 
-      <form className='user-form' onSubmit={handleSubmit(onSubmit)}>
-        <div className='user-form__form-group'>
-          <label>First Name</label>
-          <input {...register('firstName')} />
-        </div>
+      <Form<User> onSubmit={onSubmit}>
+        <Input<string> name='firstName' />
+        <Input<string> name='lastName' />
+        <Select<string> name='sex' options={['female', 'male']} />
 
-        <div className='user-form__form-group'>
-          <label>Last Name</label>
-          <input {...register('lastName', { required: true })} />
-          {errors.lastName && <p>Last name is required.</p>}
-        </div>
-
-        <div className='user-form__form-group'>
-          <label>Age</label>
-          <input {...register('age', { pattern: /\d+/ })} />
-          {errors.age && <p>Please enter number for age.</p>}
-        </div>
-
-        <button type='submit'>Submit</button>
-      </form>
+        <button>Submit</button>
+      </Form>
     </>
   );
 };
