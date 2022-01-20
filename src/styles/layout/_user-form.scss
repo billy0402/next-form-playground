@@ -1,0 +1,24 @@
+.user-form {
+  display: flex;
+  flex-direction: column;
+  margin: 5%;
+  width: 100%;
+
+  button {
+    font-size: 1.5rem;
+  }
+}
+
+.user-form__form-group {
+  margin-bottom: 20px;
+
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+
+  input {
+    font-size: 1.5rem;
+  }
+}

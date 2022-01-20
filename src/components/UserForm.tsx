@@ -16,13 +16,25 @@ const UserForm = () => {
     <>
       <DevTool control={control} placement='top-right' />
 
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <input {...register('firstName')} />
-        <input {...register('lastName', { required: true })} />
-        {errors.lastName && <p>Last name is required.</p>}
-        <input {...register('age', { pattern: /\d+/ })} />
-        {errors.age && <p>Please enter number for age.</p>}
-        <input type='submit' />
+      <form className='user-form' onSubmit={handleSubmit(onSubmit)}>
+        <div className='user-form__form-group'>
+          <label>First Name</label>
+          <input {...register('firstName')} />
+        </div>
+
+        <div className='user-form__form-group'>
+          <label>Last Name</label>
+          <input {...register('lastName', { required: true })} />
+          {errors.lastName && <p>Last name is required.</p>}
+        </div>
+
+        <div className='user-form__form-group'>
+          <label>Age</label>
+          <input {...register('age', { pattern: /\d+/ })} />
+          {errors.age && <p>Please enter number for age.</p>}
+        </div>
+
+        <button type='submit'>Submit</button>
       </form>
     </>
   );
