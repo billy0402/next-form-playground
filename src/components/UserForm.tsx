@@ -7,12 +7,7 @@ import Select from '@components/ui/Select';
 import { User } from '@models/User';
 
 const UserForm = () => {
-  const {
-    register,
-    control,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<User>();
+  const { control } = useForm<User>();
   const onSubmit = (data: User) => console.log(data);
 
   return (
@@ -22,7 +17,13 @@ const UserForm = () => {
       <Form<User> onSubmit={onSubmit}>
         <Input<string> name='firstName' />
         <Input<string> name='lastName' />
-        <Select<string> name='sex' options={['female', 'male']} />
+        <Select<string>
+          name='sex'
+          options={[
+            { label: 'male', value: 'male' },
+            { label: 'female', value: 'female' },
+          ]}
+        />
 
         <button>Submit</button>
       </Form>
